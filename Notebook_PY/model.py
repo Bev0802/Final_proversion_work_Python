@@ -114,10 +114,9 @@ def deleting_note(key_data):
 # end deleting_note  
 
 #поиск заметки по дате
-def search_date():        
-    print_dir_d()
-    list_date_key=print_dir_d()
-    notebook_dis=notebook_dir()        
+def search_date():            
+    list_date_key = print_dir_d()
+    notebook_dis = notebook_dir()        
     key_data = input("\nВведите дату на которую вы ходите посмотреть или отредактировать заметку: ")
     if (key_data in list_date_key):
         note=notebook_dis[key_data]

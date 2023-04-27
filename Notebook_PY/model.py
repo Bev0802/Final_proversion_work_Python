@@ -97,6 +97,13 @@ def deleting_note(key_data):
     notebook_dis=notebook_dir()
     print("Заметка удалена: ")
     notebook_dis.pop(key_data)
+    #запрос на сохраение
+    print("\nВы хотите сохранить изменения в файл?\n")
+    answer= view.booton()
+    if (answer.lower() =="Да".lower()):        
+         iefile.creat_file(notebook_dis)    
+    #############тест
+    print_notebook_json()      
 # end deleting_note  
 
 #поиск заметки по дате

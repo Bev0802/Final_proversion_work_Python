@@ -59,18 +59,25 @@ def notebook_dir():
     for note in notebook_list:
         notebook_dir.update(note)  
     return notebook_dir
+#end notebook_dir
 
 #Вывод в консоль всех заметок сохраненых в файл в формате справочника
-def print_dir():
+def print_dir():    
     notebook_d = notebook_dir()
     for data, tema  in notebook_d.items():
         print(data, tema)
+#end print_dir
 
 #печать даты
 def print_dir_d():
     notebook_d = notebook_dir()
+    list_date_key=[]
     for date, tema in notebook_d.items():
+        list_date_key.append(date)
         print(date)
+    return list_date_key
+#end print_dir_d
+
 
 #редактирование заметки
 def сhanging_note(key_data):
@@ -107,24 +114,26 @@ def deleting_note(key_data):
 # end deleting_note  
 
 #поиск заметки по дате
-def search_date():     
+def search_date():        
     print_dir_d()
-    notebook_dis=notebook_dir()
+    list_date_key=print_dir_d()
+    notebook_dis=notebook_dir()        
     key_data = input("\nВведите дату на которую вы ходите посмотреть или отредактировать заметку: ")
-    note=notebook_dis[key_data]
-    print(note)    
+    if (key_data in list_date_key):
+        note=notebook_dis[key_data]
+        print(note)  
 
-    print("Вы хотите изменить заметку?")
-    answer= view.booton()
-    if (answer.lower() =="Да".lower()):
-        сhanging_note(key_data)
-    else: 
-        print("Может вы хотите удалить заметку?")
+        print("Вы хотите изменить заметку?")
         answer= view.booton()
         if (answer.lower() =="Да".lower()):
-            deleting_note(key_data) 
-        else: print("Удачи!!!")
-#end search_date    
-  
-
-  
+            сhanging_note(key_data)
+        else: 
+            print("Может вы хотите удалить заметку?")
+            answer= view.booton()
+            if (answer.lower() =="Да".lower()):
+                deleting_note(key_data) 
+            else: print("Удачи!!!")
+    else: 
+        print("Дакой даты нет! Попробуйте с копипастить из списка дат. Он для этого и выводится. )))")
+        search_date()
+#end search_date 

@@ -1,4 +1,5 @@
-import model, view, import_Export_File;
+import model, view; 
+import import_Export_File as ie_file;
 
 def start():
     while True:
@@ -6,13 +7,13 @@ def start():
         if dr == 0:
             model.create_note()
         elif dr == 1:
-            model.print_notebook_json()
-        elif dr == 2:
-            return dr
+            model.print_dir()
+        elif dr == 2:            
+            model.search_date()
         elif dr == 3:
-            return dr
+            model.search_date()
         elif dr == 4:
             model.print_notebook_history()
         elif dr == 5:
-                 break
+            break
 #end start
